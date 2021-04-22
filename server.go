@@ -19,6 +19,8 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	fileServer := http.FileServer(http.Dir("./static"))
+	http.Handle("/", fileServer)
 
 	//HandleFunc function to add route handlers to the web server
 	http.HandleFunc("/hello", helloHandler)
